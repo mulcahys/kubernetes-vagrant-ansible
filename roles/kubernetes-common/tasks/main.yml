@@ -40,4 +40,11 @@
   become:  true
   shell: swapoff -a
 
+  # even with swap disabled still seem to need the following
+- name: write --fail-swap-on=false kubelet flag
+  become: true
+  copy:
+    src: 90-local-extras.conf
+    dest: /etc/systemd/system/kubelet.service.d/90-local-extras.conf
+
 - meta: flush_handlers

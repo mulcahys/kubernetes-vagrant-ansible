@@ -52,11 +52,11 @@
   template:
     src=http-proxy.conf.j2 dest=/etc/systemd/system/docker.service.d/http-proxy.conf backup=yes
 
-- name: Write docker daemon.json
-  become: true
-  copy:
-    src: daemon.json
-    dest: /etc/docker/daemon.json
+#- name: Write docker daemon.json
+#  become: true
+#  copy:
+#    src: daemon.json
+#    dest: /etc/docker/daemon.json
 
 - name: restart docker service, in all cases, also issue daemon-reload to pick up config changes
   become:  true

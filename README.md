@@ -48,4 +48,8 @@ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -vv playbook.yml -i inventory -
 
 ```
 
+## Troubleshooting
+
+journalctl -xefu kubelet
+
 
