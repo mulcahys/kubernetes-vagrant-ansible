@@ -2,11 +2,11 @@
 
 - hosts: all-nodes
   roles:
+    - docker
     - kubernetes-common
 
 - hosts: kube-master
   roles:
-    - docker
     - kubernetes-master
 
 - hosts: kube-nodes
