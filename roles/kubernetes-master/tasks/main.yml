@@ -3,10 +3,6 @@
 # Here we initialise the cluster with Kubeadm. We add the token manually so that we
 # know its value when we initialise our nodes. We add --api-advertise-addresses manually
 # because by default Kubeadm would choose the nat IP we get from Virtualbox, which is not good.
-- name:    disable swap for now https://github.com/kubernetes/kubernetes/pull/51054
-  become:  true
-  shell: swapoff -a
-
 - name:    Initialise Kubernetes Cluster
   become:  true
   #shell:   kubeadm init --token="{{ kubeadm_token }}" --api-advertise-addresses="{{ inventory_hostname }}"

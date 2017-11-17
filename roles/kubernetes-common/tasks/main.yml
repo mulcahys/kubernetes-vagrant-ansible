@@ -37,4 +37,8 @@
   notify:
     - reload systemd
 
+- name:    disable swap for now https://github.com/kubernetes/kubernetes/pull/51054
+  become:  true
+  shell: swapoff -a
+
 - meta: flush_handlers

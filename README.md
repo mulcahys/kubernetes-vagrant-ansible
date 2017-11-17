@@ -44,7 +44,8 @@ Then, provision the machines.
 ```
 sudo apt install sshpass
 
-ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook playbook.yml -i inventory -e @vars.yml
+ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -vv playbook.yml -i inventory -e @vars.yml
+
 ```
 
 

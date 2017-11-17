@@ -1,0 +1,2 @@
+[Service]
+Environment="HTTP_PROXY={{ lookup('env','HTTP_PROXY') }}" "HTTPS_PROXY={{ lookup('env','HTTPS_PROXY') }}" "NO_PROXY={{ lookup('env','NO_PROXY') }}" "http_proxy={{ lookup('env','http_proxy') }}" "https_proxy={{ lookup('env','https_proxy') }}" "no_proxy={{ lookup('env','no_proxy') }}"
