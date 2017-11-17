@@ -49,7 +49,7 @@
 - name: Write docker http-proxy.conf
   become:  true
   template:
-    src=http-proxy.conff.j2 dest=/etc/systemd/system/docker.service.d/http-proxy.conf backup=yes
+    src=http-proxy.conf.j2 dest=/etc/systemd/system/docker.service.d/http-proxy.conf backup=yes
 
 - name: restart docker service, in all cases, also issue daemon-reload to pick up config changes
   become:  true
