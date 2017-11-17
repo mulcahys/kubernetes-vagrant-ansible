@@ -6,12 +6,6 @@ nodes = [
 ]
 
 Vagrant.configure("2") do |config|
-  if Vagrant.has_plugin?("vagrant-proxyconf")
-    config.proxy.http     = ENV['http_proxy']
-    config.proxy.https    = ENV['https_proxy']
-    config.proxy.no_proxy = ENV['no_proxy']
-  end
-
   nodes.each do |node|
     config.vm.define node[:hostname] do |nodeconfig|
       nodeconfig.vm.box = "elastic/ubuntu-16.04-x86_64";
@@ -25,4 +19,16 @@ Vagrant.configure("2") do |config|
       end
     end
   end
+
+  if Vagrant.has_plugin?("vagrant-proxyconf")
+    config.proxy.http     = ENV['http_proxy']
+    config.proxy.https    = ENV['https_proxy']
+    addresses = []
+    addresses << ENV['no_proxy']
+    nodes.each do |node|
+      addresses << node[:ip]
+    end
+    config.proxy.no_proxy = addresses * ","
+  end
+
 end

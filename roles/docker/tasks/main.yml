@@ -30,9 +30,10 @@
 
 - name: Install docker
   become:  true
-  apt:  name={{item}} state=present
-  with_items:
-  - docker-ce
+#  apt:  name={{item}} state=present
+#  with_items:
+#  - docker-ce
+  shell: apt install -y docker-ce=$(apt-cache madison docker-ce | grep 17.03 | head -1 | awk '{print $3}')
 
 - name: Enable docker at boot
   become:  true
@@ -50,6 +51,12 @@
   become:  true
   template:
     src=http-proxy.conf.j2 dest=/etc/systemd/system/docker.service.d/http-proxy.conf backup=yes
+
+- name: Write docker daemon.json
+  become: true
+  copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
 
 - name: restart docker service, in all cases, also issue daemon-reload to pick up config changes
   become:  true

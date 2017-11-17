@@ -5,7 +5,6 @@
 # because by default Kubeadm would choose the nat IP we get from Virtualbox, which is not good.
 - name:    Initialise Kubernetes Cluster
   become:  true
-  #shell:   kubeadm init --token="{{ kubeadm_token }}" --api-advertise-addresses="{{ inventory_hostname }}"
   shell:   kubeadm init --token="{{ kubeadm_token }}" --apiserver-advertise-address="{{ inventory_hostname }}"
 
 # We install JQ for the next task
