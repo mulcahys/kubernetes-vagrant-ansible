@@ -26,15 +26,15 @@
     - kubelet
     - kubeadm
     - kubectl
-    - kubernetes-cni
+#    - kubernetes-cni
 
-- name:      Overide Kubelet service config to add IP Address
-  become:    true
-  template:
-    src:     "10-kubeadm.conf"
-    dest:    "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf"
-  notify:
-    - reload systemd
+# - name:      Overide Kubelet service config to add IP Address
+#  become:    true
+#  template:
+#    src:     "10-kubeadm.conf"
+#    dest:    "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf"
+#  notify:
+#    - reload systemd
 
 - name:    disable swap for now https://github.com/kubernetes/kubernetes/pull/51054
   become:  true

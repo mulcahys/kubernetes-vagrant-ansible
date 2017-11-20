@@ -2,4 +2,4 @@
 
 - name:      Join Kubernetes Cluster
   become:    true
-  shell:     kubeadm join --token={{ kubeadm_token }} {{ kubernetes_master_ip }}
+  shell:     kubeadm join --token={{ kubeadm_token }} {{ kubernetes_master_ip }}:{{ kubernetes_master_port }}
